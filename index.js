@@ -394,7 +394,7 @@ class HtmlWebpackPlugin {
       }
       // if included chunks is a method, test it
       if(excludedChunks && {}.toString.call(excludedChunks) === '[object Function]'){
-        return excludedChunks(chunk);
+        return !excludedChunks(chunk);
       }
       // if included chunks is a method, test it
       if(includedChunks && {}.toString.call(includedChunks) === '[object Function]'){
