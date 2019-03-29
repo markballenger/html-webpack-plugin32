@@ -392,6 +392,10 @@ class HtmlWebpackPlugin {
       if (Array.isArray(excludedChunks) && excludedChunks.indexOf(chunkName) !== -1) {
         return false;
       }
+      // if included chunks is a method, test it
+      if(includedChunks && {}.toString.call(includedChunks) === '[object Function]'){
+        return includedChunks(chunk);
+      }
       // Add otherwise
       return true;
     });
